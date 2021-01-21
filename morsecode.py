@@ -105,7 +105,13 @@ def is_validated_english_sentence(user_input):
         else:
             return False
 
-    if include_num(user_input) or include_special(user_input) or only_finish(user_input):
+    def empty(user_input):
+        if ''.join(user_input.split())=="":
+            return True
+        else:
+            return False
+
+    if include_num(user_input) or include_special(user_input) or only_finish(user_input) or empty(user_input):
         return False
     else:
         return True
@@ -287,17 +293,18 @@ def main():
     # ===Modify codes below=============
     while True:
         user_input = input('Input your message(H - Help, 0 - Exit): ')
-        if user_input=='0':
+        if user_input=='0': #1
             break
-        elif is_help_command(user_input):
+        elif is_help_command(user_input): #2
             print(get_help_message())
             
-
-        elif is_validated_english_sentence(user_input):
+        elif is_validated_english_sentence(user_input): #3
             print(encoding_sentence(user_input))
-        elif is_validated_morse_code(user_input):
+
+        elif is_validated_morse_code(user_input): #4
             print(decoding_sentence(user_input))
-        else:
+
+        else: #5
             print("Wrong Input")
     
     # ==================================
