@@ -287,11 +287,14 @@ def main():
     # ===Modify codes below=============
     while True:
         user_input = input('Input your message(H - Help, 0 - Exit): ')
-        if is_validated_morse_code(user_input):
-            print(decoding_sentence(user_input))
+        if is_help_command(user_input):
+            print(get_help_message())
+            
 
         elif is_validated_english_sentence(user_input):
             print(encoding_sentence(user_input))
+        elif is_validated_morse_code(user_input):
+            print(decoding_sentence(user_input))
         elif user_input=='0':
             break
         else:
@@ -303,5 +306,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-#main()
